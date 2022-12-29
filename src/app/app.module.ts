@@ -28,14 +28,22 @@ import { MatListModule } from '@angular/material/list'
 import { MatCardModule } from '@angular/material/card'
 
 //componentes do projeto
-import { NavComponent } from './components/nav/nav.component';
-import { HomeComponent } from './components/home/home.component';
-import { HeaderComponent } from './components/header/header.component';
-import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
+import { NavComponent } from './components/nav/nav.component'
+import { HomeComponent } from './components/home/home.component'
+import { HeaderComponent } from './components/header/header.component'
+import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component'
 import { LoginComponent } from './components/login/login.component'
+import { ToastrModule } from 'ngx-toastr'
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, HeaderComponent, TecnicoListComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    HeaderComponent,
+    TecnicoListComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -59,7 +67,12 @@ import { LoginComponent } from './components/login/login.component'
     MatTableModule,
     MatIconModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

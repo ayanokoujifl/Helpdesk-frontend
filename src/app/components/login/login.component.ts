@@ -1,6 +1,8 @@
 import { Component } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
+import { ToastrService } from 'ngx-toastr'
 import { Credenciais } from 'src/app/models/credenciais'
+import { AuthService } from 'src/app/services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -17,10 +19,17 @@ export class LoginComponent {
   senha = new FormControl(null, Validators.minLength(3))
 
   validaCampos(): boolean {
-    if (this.email.valid && this.senha.valid) {
-      return true
-    } else {
-      return false
-    }
+    return this.email.valid && this.senha.valid
+  }
+
+  constructor(private toast: ToastrService, private service: AuthService) {}
+
+  logar() {
+    console.log('logando')
+    this.service.authenticate(this.creds).subscribe((response) => {
+      console.log('logando')
+      this.toast.info(response.headers.get('Authorization'))
+    })
+    console.log('logado')
   }
 }
