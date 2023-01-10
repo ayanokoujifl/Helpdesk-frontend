@@ -1,6 +1,8 @@
 import { Component } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
 import { ToastrService } from 'ngx-toastr'
+import { async } from 'rxjs'
 import { Credenciais } from 'src/app/models/credenciais'
 import { AuthService } from 'src/app/services/auth.service'
 
@@ -22,14 +24,23 @@ export class LoginComponent {
     return this.email.valid && this.senha.valid
   }
 
-  constructor(private toast: ToastrService, private service: AuthService) {}
+  constructor(
+    private toast: ToastrService,
+    private service: AuthService,
+    private router: Router
+  ) {}
 
   logar() {
-    console.log('logando')
-    this.service.authenticate(this.creds).subscribe((response) => {
-      console.log('logando')
-      this.toast.info(response.headers.get('Authorization'))
-    })
-    console.log('logado')
+    this.service.authenticate(this.creds).subscribe(
+      (resposta) => {
+        this.service.successfullLogin(
+          resposta.headers.get('Authorization').substring(7)
+        )
+        this.router.navigate([''])
+      },
+      () => {
+        this.toast.error('Usuário ou senha inválidos!')
+      }
+    )
   }
 }
