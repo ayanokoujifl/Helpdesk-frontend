@@ -36,7 +36,7 @@ export class LoginComponent {
         this.service.successfullLogin(
           resposta.headers.get('Authorization').substring(7)
         )
-        this.router.navigate([''])
+        this.router.navigate(['home'])
       },
       () => {
         this.toast.error('Usuário ou senha inválidos!')
