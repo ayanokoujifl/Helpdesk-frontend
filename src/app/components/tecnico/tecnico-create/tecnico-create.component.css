@@ -32,3 +32,7 @@ p {
   opacity: 0.5;
   text-decoration: underline;
 }
+
+mat-icon {
+  opacity: 0.8;
+}
