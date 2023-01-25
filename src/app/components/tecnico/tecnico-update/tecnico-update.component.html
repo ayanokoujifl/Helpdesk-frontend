@@ -1,6 +1,6 @@
 <div class="container mat-elevation-z8">
   <form action="" class="form">
-    <h1>Cadastro de técnico</h1>
+    <h1>Atualizar técnico</h1>
     <img
       src="https://raw.githubusercontent.com/ValdirCezar/helpdesk-front/master/src/assets/img/tecnico-create.svg"
       alt=""
@@ -77,15 +77,15 @@
       color="primary"
       class="full-width mat-elevation-z4"
       [disabled]="!validaCampos()"
-      (click)="create()"
+      (click)="update()"
     >
-      Cadastrar
+      Atualizar
     </button>
     <button
       mat-stroked-button
       color="warn"
       class="full-width mat-elevation-z4"
-      routerLink="../"
+      routerLink="../../"
     >
       Cancelar
     </button>
