@@ -28,3 +28,11 @@ h1 {
   font-family: 'Sofia Sans', sans-serif;
   font-size: 215%;
 }
+
+.edit {
+  color: rgba(23, 70, 214, 1);
+}
+
+.delete {
+  color: rgb(204, 5, 5);
+}
