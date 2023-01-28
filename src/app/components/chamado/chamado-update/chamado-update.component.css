@@ -1,0 +1,52 @@
+.container {
+  width: 40rem;
+  margin: auto auto 3rem auto;
+  padding: 1rem;
+  border: 0.6rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+img {
+  height: 9rem;
+  margin: auto;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin-top: 0.5rem;
+}
+
+p {
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.5;
+  text-decoration: underline;
+}
+
+mat-icon {
+  opacity: 0.8;
+}
+
+.status-prioridade {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-prioridade mat-form-field {
+  width: 49%;
+}
+
+.descricao {
+  min-height: 6rem;
+  max-height: 10rem;
+}
