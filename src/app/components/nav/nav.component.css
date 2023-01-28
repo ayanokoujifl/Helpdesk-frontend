@@ -17,6 +17,12 @@ span {
   color: #fff;
 }
 
+.sidenav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .sidenav i {
   margin-right: 0.6rem;
 }
