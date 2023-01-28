@@ -26,10 +26,12 @@ export class ChamadoCreateComponent {
     nomeTecnico: ''
   }
 
-  nome: FormControl = new FormControl(null, Validators.minLength(3))
-  cpf: FormControl = new FormControl(null, Validators.required)
-  email: FormControl = new FormControl(null, Validators.email)
-  senha: FormControl = new FormControl(null, Validators.minLength(3))
+  titulo: FormControl = new FormControl(null, [Validators.required])
+  status: FormControl = new FormControl(null, [Validators.required])
+  prioridade: FormControl = new FormControl(null, [Validators.required])
+  descricao: FormControl = new FormControl(null, [Validators.required])
+  tecnico: FormControl = new FormControl(null, [Validators.required])
+  cliente: FormControl = new FormControl(null, [Validators.required])
 
   constructor(
     private service: ChamadoService,
@@ -41,7 +43,12 @@ export class ChamadoCreateComponent {
 
   validaCampos(): boolean {
     return (
-      this.nome.valid && this.email.valid && this.senha.valid && this.cpf.valid
+      this.prioridade.valid &&
+      this.status.valid &&
+      this.titulo.valid &&
+      this.descricao.valid &&
+      this.tecnico.valid &&
+      this.cliente.valid
     )
   }
 

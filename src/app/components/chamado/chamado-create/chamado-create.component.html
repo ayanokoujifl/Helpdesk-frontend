@@ -9,13 +9,19 @@
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Titulo</mat-label>
-      <input name="titulo" matInput placeholder="Titulo do chamado" required />
+      <input
+        name="titulo"
+        matInput
+        placeholder="Titulo do chamado"
+        required
+        [formControl]="titulo"
+      />
     </mat-form-field>
 
     <div class="status-prioridade">
       <mat-form-field appearance="outline">
         <mat-label>Status do chamado</mat-label>
-        <mat-select>
+        <mat-select required [formControl]="status">
           <mat-option value="0">Aberto</mat-option>
           <mat-option value="1">Andamento</mat-option>
           <mat-option value="2">Encerrado</mat-option>
@@ -23,7 +29,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Prioridade do chamado</mat-label>
-        <mat-select>
+        <mat-select required [formControl]="prioridade">
           <mat-option value="0">Baixa</mat-option>
           <mat-option value="1">Média</mat-option>
           <mat-option value="2">Alta</mat-option>
@@ -34,7 +40,7 @@
     <div class="tecnico">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Tecnico do chamado</mat-label>
-        <mat-select>
+        <mat-select required [formControl]="tecnico">
           <mat-option value="0">Baixa</mat-option>
         </mat-select>
       </mat-form-field>
@@ -43,7 +49,7 @@
     <div class="cliente">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Cliente</mat-label>
-        <mat-select>
+        <mat-select required [formControl]="cliente">
           <mat-option value="0">Einstein</mat-option>
         </mat-select>
       </mat-form-field>
@@ -52,6 +58,8 @@
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Deixe um comentário</mat-label>
       <textarea
+        required
+        [formControl]="descricao"
         matInput
         placeholder="Trocar capacitores da placa mãe..."
         class="descricao"
