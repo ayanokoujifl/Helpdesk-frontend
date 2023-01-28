@@ -1,0 +1,83 @@
+<div class="container mat-elevation-z8">
+  <form action="" class="form">
+    <h1>Cadastro de cliente</h1>
+    <img
+      src="https://raw.githubusercontent.com/ValdirCezar/helpdesk-front/master/src/assets/img/chamado-create.svg"
+      alt="Chamado.jpg"
+      class="full-width"
+    />
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Titulo</mat-label>
+      <input name="titulo" matInput placeholder="Titulo do chamado" required />
+    </mat-form-field>
+
+    <div class="status-prioridade">
+      <mat-form-field appearance="outline">
+        <mat-label>Status do chamado</mat-label>
+        <mat-select>
+          <mat-option value="0">Aberto</mat-option>
+          <mat-option value="1">Andamento</mat-option>
+          <mat-option value="2">Encerrado</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Prioridade do chamado</mat-label>
+        <mat-select>
+          <mat-option value="0">Baixa</mat-option>
+          <mat-option value="1">Média</mat-option>
+          <mat-option value="2">Alta</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="tecnico">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Tecnico do chamado</mat-label>
+        <mat-select>
+          <mat-option value="0">Baixa</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="cliente">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Cliente</mat-label>
+        <mat-select>
+          <mat-option value="0">Einstein</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Deixe um comentário</mat-label>
+      <textarea
+        matInput
+        placeholder="Trocar capacitores da placa mãe..."
+        class="descricao"
+      ></textarea>
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      color="primary"
+      class="full-width mat-elevation-z4"
+      [disabled]="!validaCampos()"
+      (click)="create()"
+    >
+      Cadastrar
+    </button>
+    <button
+      mat-stroked-button
+      color="warn"
+      class="full-width mat-elevation-z4"
+      routerLink="../"
+    >
+      Cancelar
+    </button>
+  </form>
+  <p class="full-width">
+    By
+    <a href="https://github.com/ayanokoujifl" target="_blank">Luís Gustavo</a>
+  </p>
+</div>
