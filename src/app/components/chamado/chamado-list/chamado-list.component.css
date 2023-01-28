@@ -2,7 +2,7 @@
 
 .container {
   width: 90%;
-  margin: auto;
+  margin: auto auto 3rem auto;
   margin-top: 1rem;
 }
 
