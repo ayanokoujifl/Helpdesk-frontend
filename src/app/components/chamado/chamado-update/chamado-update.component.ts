@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { ToastrService } from 'ngx-toastr'
 import { Chamado } from 'src/app/models/chamado'
 import { Cliente } from 'src/app/models/cliente'
@@ -16,6 +16,8 @@ import { TecnicoService } from 'src/app/services/tecnico.service'
 })
 export class ChamadoUpdateComponent {
   ngOnInit(): void {
+    this.chamado.id = this.route.snapshot.paramMap.get('id')
+    this.findById()
     this.findAllClientes()
     this.findAllTecnicos()
   }
@@ -46,8 +48,20 @@ export class ChamadoUpdateComponent {
     private toast: ToastrService,
     private router: Router,
     private clienteService: ClienteService,
-    private tecnicoService: TecnicoService
+    private tecnicoService: TecnicoService,
+    private route: ActivatedRoute
   ) {}
+
+  findById(): void {
+    this.service.findById(this.chamado.id).subscribe(
+      (res) => {
+        this.chamado = res
+      },
+      (ex) => {
+        this.toast.error(ex.error.error)
+      }
+    )
+  }
 
   findAllClientes(): void {
     this.clienteService.findAll().subscribe((res) => {
@@ -72,8 +86,8 @@ export class ChamadoUpdateComponent {
     )
   }
 
-  create(): void {
-    this.service.create(this.chamado).subscribe(
+  update(): void {
+    this.service.update(this.chamado).subscribe(
       () => {
         this.toast.success(
           `Chamado ${this.chamado.titulo} cadastrado com sucesso`,
@@ -91,5 +105,25 @@ export class ChamadoUpdateComponent {
         }
       }
     )
+  }
+
+  retornaStatus(status: any): string {
+    if (status == '0') {
+      return 'Aberto'
+    } else if (status == '1') {
+      return 'Andamento'
+    } else {
+      return 'Encerrado'
+    }
+  }
+
+  retornaPrioridade(prioridade: any): string {
+    if (prioridade == '0') {
+      return 'Baixa'
+    } else if (prioridade == '1') {
+      return 'Média'
+    } else {
+      return 'Alta'
+    }
   }
 }
